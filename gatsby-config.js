@@ -7,11 +7,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        google: {
-          families: ["Inter"],
-        },
+        fonts: [
+          `Inter\:100,200,300,400,500,600,700,800,900`,
+          `Fira Sans\:100,200,300,400,500,600,700,800,900`,
+          `Rubik\:100,200,300,400,500,600,700,800,900`,
+        ],
+        display: "swap",
       },
     },
     {

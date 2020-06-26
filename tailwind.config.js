@@ -60,6 +60,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        fira: ["Fira Sans", ...defaultTheme.fontFamily.sans],
+        rubik: ["Rubik", ...defaultTheme.fontFamily.sans],
       },
     },
   },
