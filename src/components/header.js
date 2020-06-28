@@ -44,10 +44,10 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
   `)
   return (
     <header
-      className="relative object-cover w-full bg-center bg-cover h-40vh font-rubik "
+      className="relative object-cover w-full bg-center bg-cover md:min-h-24rem font-rubik"
       style={{ backgroundImage: `url(${bgImg.sharp.fluid.src}) ` }}
     >
-      <div className="w-full h-full bg-black bg-opacity-50">
+      <div className="w-full h-full bg-black bg-opacity-50 md:min-h-24rem">
         <div className="flex justify-end md:hidden">
           <button className="mt-6 mr-8" onClick={() => setToggleNav(true)}>
             <span>
@@ -66,7 +66,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
           </button>
         </div>
         <div className="flex flex-col items-center justify-center w-full h-full text-white ">
-          <div className="flex flex-col items-center justify-center -mt-8 space-y-8 md:mt-8">
+          <div className="flex flex-col items-center justify-center mt-8 space-y-8">
             <div className="">
               <div className="w-24 h-24 md:h-36 md:w-36">
                 <img
@@ -80,7 +80,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
               <span className="text-5xl">I</span>nstitut Congolais de demain
             </h1>
           </div>
-          <div className="hidden w-full max-w-3xl px-6 py-6 mt-2 font-sans md:block">
+          <div className="hidden w-full max-w-3xl px-6 pt-6 mt-8 font-sans md:block">
             <nav className="flex justify-between w-full text-xs font-light">
               <Link to="/" activeClassName="text-blue-400">
                 <span className="tracking-widest uppercase hover:text-blue-400">
