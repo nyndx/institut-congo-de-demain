@@ -5,13 +5,17 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Header from "./header"
+import MobileNav from "./mobilenav"
 
 const Layout = ({ children }) => {
+  const [toggleNav, setToggleNav] = useState(false)
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,13 +28,58 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div className="font-rubik bg-white h-screen overflow-auto">
-        <main className="container mx-auto">{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+      <div className="relative bg-white font-rubik">
+        {toggleNav ? (
+          <MobileNav toggleNav={toggleNav} setToggleNav={setToggleNav} />
+        ) : null}
+
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          toggleNav={toggleNav}
+          setToggleNav={setToggleNav}
+        />
+        <main className="container px-8 mx-auto mb-20 font-rubik min-h-60vh">
+          {children}
+        </main>
+        <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
+          <div className="container p-8 mx-auto font-rubik">
+            <div className="mb-8">
+              <ul className="flex flex-col w-full space-y-4 text-xs font-light">
+                <Link to="/">
+                  <li className="self-start tracking-widest hover:text-blue-400">
+                    Accueil
+                  </li>
+                </Link>
+                <Link to="/a-propos">
+                  <li className="tracking-widest hover:text-blue-400">
+                    A propos
+                  </li>
+                </Link>
+                <Link to="/analyses">
+                  <li className="tracking-widest hover:text-blue-400">
+                    Analyses
+                  </li>
+                </Link>
+                <Link to="/podcasts">
+                  <li className="tracking-widest hover:text-blue-400">
+                    Podcasts
+                  </li>
+                </Link>
+                <Link to="/contact">
+                  <li className="tracking-widest hover:text-blue-400">
+                    Contact
+                  </li>
+                </Link>
+              </ul>
+            </div>
+            <div className="font-light">
+              <span className="font-medium">
+                Copyright © {new Date().getFullYear()},
+              </span>
+              {` `}
+              Institut Congo de demain
+            </div>
+          </div>
         </footer>
       </div>
     </>
