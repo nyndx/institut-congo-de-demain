@@ -77,7 +77,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
               </div>
             </div>
             <h1 className="flex items-center font-sans font-bold leading-relaxed tracking-wide sm:text-2xl">
-              <span className="text-5xl">I</span>nstitut Congolais de demain
+              <span className="text-5xl">I</span>nstitut Congo de demain
             </h1>
           </div>
           <div className="hidden w-full max-w-3xl px-6 pt-6 mt-8 font-sans md:block">
