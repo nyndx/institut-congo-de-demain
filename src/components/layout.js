@@ -38,7 +38,11 @@ const Layout = ({ children }) => {
           toggleNav={toggleNav}
           setToggleNav={setToggleNav}
         />
-        <main className="container px-8 mx-auto mb-20 font-rubik min-h-60vh">
+        <main
+          className={`container px-8 mx-auto mb-20 font-rubik min-h-60vh ${
+            toggleNav && "h-screen overflow-hidden"
+          }`}
+        >
           {children}
         </main>
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
