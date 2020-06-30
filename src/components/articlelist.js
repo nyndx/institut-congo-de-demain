@@ -9,9 +9,9 @@ const ArticleList = ({ data, category }) => {
         <h1 className="text-lg font-medium tracking-wide text-blue-400 uppercase">
           {category}
         </h1>
-        <span className="italic font-light text-blue-400">
+        <p className="text-sm font-semibold text-blue-400">
           {data.allDatoCmsArticle.edges.length} Article(s)
-        </span>
+        </p>
       </div>
       {!data.allDatoCmsArticle.edges.length && (
         <p className="mt-20 text-2xl text-center text-gray-600">
