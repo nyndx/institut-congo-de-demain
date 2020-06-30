@@ -26,17 +26,17 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
       bgImg: file(relativePath: { eq: "trevor-cole-unsplash.jpg" }) {
         sharp: childImageSharp {
           fluid(fit: COVER, maxWidth: 2400) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            src
           }
         }
       }
       logo: file(relativePath: { eq: "icd-icon.jpg" }) {
         sharp: childImageSharp {
           fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            src
           }
           fixed(fit: COVER) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            src
           }
         }
       }
@@ -77,7 +77,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
               </div>
             </div>
             <h1 className="flex items-center font-sans font-bold leading-relaxed tracking-wide sm:text-2xl">
-              <span className="text-5xl">I</span>nstitut Congo de demain
+              <span className="text-5xl">I</span>nstitut Congolais de demain
             </h1>
           </div>
           <div className="hidden w-full max-w-3xl px-6 pt-6 mt-8 font-sans md:block">

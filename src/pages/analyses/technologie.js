@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 import ArticleList from "../../components/articlelist"
 
 const Technologie = ({ data }) => {
-  console.log(data.allDatoCmsArticle.edges.length)
   return (
     <Layout>
       <SEO title="Technolgie"></SEO>
@@ -32,6 +31,7 @@ export const query = graphql`
           category {
             tag
           }
+          publicationdate
         }
       }
     }
