@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import { slug } from "../utils"
 
-import { MDXRenderer } from "gatsby-plugin-mdx"
-
 const ArticleList = ({ data, category }) => {
   return (
     <div className="mt-8 md:mt-10">

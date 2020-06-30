@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import ArticleList from "../../components/articlelist"
+import { graphql } from "gatsby"
 
 const Social = ({ data }) => {
   return (

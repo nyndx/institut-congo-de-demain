@@ -28,7 +28,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className="relative bg-white font-rubik">
+      <div
+        className={`relative bg-white font-rubik ${
+          toggleNav && "h-screen overflow-hidden"
+        }`}
+      >
         {toggleNav ? (
           <MobileNav toggleNav={toggleNav} setToggleNav={setToggleNav} />
         ) : null}
@@ -38,17 +42,13 @@ const Layout = ({ children }) => {
           toggleNav={toggleNav}
           setToggleNav={setToggleNav}
         />
-        <main
-          className={`container px-8 mx-auto mb-20 font-rubik min-h-60vh ${
-            toggleNav && "h-screen overflow-hidden"
-          }`}
-        >
+        <main className={`container px-8 mx-auto mb-20 font-rubik min-h-60vh `}>
           {children}
         </main>
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
           <div className="container p-8 mx-auto font-rubik">
             <div className="mb-8">
-              <ul className="flex flex-col w-full space-y-4 text-lg font-light">
+              <ul className="flex flex-col w-full space-y-4 ">
                 <Link to="/">
                   <li className="self-start tracking-widest hover:text-blue-400">
                     Accueil
@@ -76,7 +76,7 @@ const Layout = ({ children }) => {
                 </Link>
               </ul>
             </div>
-            <div className="font-light">
+            <div className="text-sm font-light">
               <span className="font-medium">
                 Copyright © {new Date().getFullYear()},
               </span>
