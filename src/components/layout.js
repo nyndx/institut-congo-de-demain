@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
           <div className="container p-8 mx-auto font-rubik">
             <div className="mb-8">
-              <ul className="flex flex-col w-full space-y-4 text-xs font-light">
+              <ul className="flex flex-col w-full space-y-4 text-lg font-light">
                 <Link to="/">
                   <li className="self-start tracking-widest hover:text-blue-400">
                     Accueil
