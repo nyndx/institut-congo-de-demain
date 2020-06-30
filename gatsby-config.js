@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Institut Congo de Demain`,
@@ -6,6 +8,16 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-mdx`,
+
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: process.env.DATA_API_TOKEN,
+        preview: false,
+        disableLiveReload: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -29,8 +41,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Institut Congo de demain`,
+        short_name: `ICD`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

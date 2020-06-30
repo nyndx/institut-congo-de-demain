@@ -1,16 +1,40 @@
 import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import ArticleList from "../../components/articlelist"
 
-const Social = () => {
+const Social = ({ data }) => {
   return (
     <Layout>
       <SEO title="Social"></SEO>
-      <div className="mt-8 md:mt-10">
-        <h1>Social</h1>
-      </div>
+      <ArticleList data={data} category="Social"></ArticleList>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    allDatoCmsArticle(
+      sort: { fields: publicationdate, order: DESC }
+      filter: { category: { tag: { eq: "Social" } } }
+    ) {
+      edges {
+        node {
+          author {
+            id
+            name
+          }
+          title
+          excerpt
+          slug
+          id
+          category {
+            tag
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Social

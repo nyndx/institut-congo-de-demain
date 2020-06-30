@@ -1,16 +1,41 @@
 import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import { graphql } from "gatsby"
+import ArticleList from "../../components/articlelist"
 
-const Economie = () => {
+const Economie = ({ data }) => {
   return (
     <Layout>
       <SEO title="Economie"></SEO>
-      <div className="mt-8 md:mt-10">
-        <h1>Economie</h1>
-      </div>
+      <ArticleList data={data} category="Economie"></ArticleList>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    allDatoCmsArticle(
+      sort: { fields: publicationdate, order: DESC }
+      filter: { category: { tag: { eq: "Economie" } } }
+    ) {
+      edges {
+        node {
+          author {
+            id
+            name
+          }
+          title
+          excerpt
+          slug
+          id
+          category {
+            tag
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Economie
