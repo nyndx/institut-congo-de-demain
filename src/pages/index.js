@@ -6,8 +6,8 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="max-w-2xl px-6 mx-auto mt-8 space-y-8 md:mt-16">
-      <h1 className="text-xl italic sm:text-2xl md:text-4xl">
+    <div className="px-6 mx-auto mt-8 space-y-8 md:mt-16">
+      <h1 className="text-xl italic sm:text-2xl md:text-3xl">
         <em>
           "Lorsque nous nous y attendons le moins, la vie nous met au défi de
           tester notre courage et notre volonté de changer ; à un tel moment, il

@@ -24,10 +24,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          author {
-            id
-            name
-          }
           title
           excerpt
           slug

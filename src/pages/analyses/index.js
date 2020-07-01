@@ -22,9 +22,9 @@ const Analyses = ({ data }) => {
         )}
         <div className="max-w-3xl mt-8">
           {data.allDatoCmsArticle.edges.map(({ node: article }) => (
-            <article key={article.id} className="py-12 space-y-2">
+            <article key={article.id} className="py-8 space-y-2">
               <time
-                datetime={article.publicationdate}
+                dateTime={article.publicationdate}
                 className="mt-4 leading-6 text-gray-500"
               >
                 {format(new Date(article.publicationdate), "MMMM d, y")}
@@ -46,13 +46,18 @@ const Analyses = ({ data }) => {
                   }}
                 ></p>
 
-                <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800">
+                <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
                   <Link
                     to={`/analyses/${slug(article.category.tag)}/${slug(
                       article.slug
                     )}`}
                   >
-                    Read more <span>&#8594;</span>
+                    <span className="flex items-center ">
+                      <span>Read more </span>
+                      <span className="ml-2 group-hover:text-blue-500">
+                        &#8594;
+                      </span>
+                    </span>
                   </Link>
                 </p>
               </div>
@@ -69,10 +74,6 @@ export const query = graphql`
     allDatoCmsArticle(sort: { fields: publicationdate, order: DESC }) {
       edges {
         node {
-          author {
-            id
-            name
-          }
           title
           excerpt
           slug

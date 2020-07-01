@@ -7,11 +7,11 @@ const Apropos = () => {
     <Layout>
       <SEO title="A propos"></SEO>
       <section className="mt-8 md:mt-10">
-        <div>
-          <h1 className="font-sans text-2xl font-semibold text-center sm:text-4xl">
+        <div className="space-y-10">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-700 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             Ce que nous sommes
           </h1>
-          <div className="mt-6 space-y-4 text-lg sm:text-xl md:text-2xl">
+          <div className="mt-6 space-y-6 text-xl sm:text-2xl md:text-3xl">
             <p>
               L'institut congolais de demain est un centre de réflexion non
               partisan, à but non lucratif, qui se consacre à la promotion

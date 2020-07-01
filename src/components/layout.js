@@ -42,11 +42,13 @@ const Layout = ({ children }) => {
           toggleNav={toggleNav}
           setToggleNav={setToggleNav}
         />
-        <main className={`container px-8 mx-auto mb-20 font-rubik min-h-60vh `}>
+        <main
+          className={`container px-8 mx-auto max-w-3xl xl:max-w-4xl mb-20 font-sans min-h-60vh `}
+        >
           {children}
         </main>
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
-          <div className="container p-8 mx-auto font-rubik">
+          <div className="container max-w-3xl p-8 mx-auto font-sans xl:max-w-4xl">
             <div className="mb-8">
               <ul className="flex flex-col w-full space-y-4 ">
                 <Link to="/">
