@@ -1,8 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { format } from "date-fns"
+import ReactPlayer from "react-player"
 
 const Post = ({ data }) => {
   const author = data.datoCmsArticle.author
@@ -11,6 +13,7 @@ const Post = ({ data }) => {
   const date = data.datoCmsArticle.publicationdate
   const slug = data.datoCmsArticle.slug
   const title = data.datoCmsArticle.title
+  const cont = data.datoCmsArticle.content
 
   // console.log(author)
   // console.log(category)
@@ -18,6 +21,7 @@ const Post = ({ data }) => {
   // console.log(date)
   // console.log(slug)
   // console.log(title)
+  console.log(cont)
 
   return (
     <Layout>
@@ -35,41 +39,65 @@ const Post = ({ data }) => {
               {Array.isArray(author) &&
                 author.map(author => (
                   <ul
-                    className="flex justify-center mr-4 space-x-8"
+                    className="flex justify-center m-0 mr-4 space-x-8"
                     key={author.id}
                   >
                     <li className="flex items-center space-x-2">
                       <img
                         src={author.image.url}
                         alt={author.image.alt}
-                        className="w-10 h-10 border-2 rounded-full"
+                        className="w-6 h-6 m-0 border-2 rounded-full "
                       />
-                      <p className="text-sm font-medium leading-5 whitespace-no-wrap">
+                      <p className="m-0 text-sm font-medium leading-5 whitespace-no-wrap">
                         {author.name}
                       </p>
                     </li>
                   </ul>
                 ))}
-              {/* {
-                <ul
-                  className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8"
-                  key={author.id}
-                >
-                  <li className="flex items-center space-x-2">
-                    <img
-                      src={author.image.url}
-                      alt={author.image.alt}
-                      className="w-10 h-10 border-2 rounded-full"
-                    />
-                    <p className="text-sm font-medium leading-5 whitespace-no-wrap">
-                      {author.name}
-                    </p>
-                  </li>
-                </ul>
-              } */}
             </div>
           </div>
         </header>
+        <div>
+          <div className="mt-8 md:mt-10 prose">
+            {data.datoCmsArticle.content.map(block => (
+              <div key={block.id}>
+                {block.model.apiKey === "text" && (
+                  <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                )}
+                {block.model.apiKey === "quote" && (
+                  <figure>
+                    <blockquote>
+                      <p dangerouslySetInnerHTML={{ __html: block.quote }}></p>
+                    </blockquote>
+                    <figcaption className="mr-8 text-right">
+                      &mdash;
+                      <span
+                        dangerouslySetInnerHTML={{ __html: block.author }}
+                      ></span>
+                    </figcaption>
+                  </figure>
+                )}
+                {block.model.apiKey === "text_image" && (
+                  <div className="max-w-xl mx-auto">
+                    <Img fluid={block.image.fluid} alt={block.image.alt} />
+                    <p>{block.image.text}</p>
+                  </div>
+                )}
+                {block.model.apiKey === "video" && (
+                  <div className="flex flex-col items-center justify-center">
+                    <ReactPlayer controls url={block.video.url} light />
+                    <p className="max-w-lg mt-4">{block.video.title}</p>
+                  </div>
+                )}
+                {block.model.apiKey === "image" && (
+                  <div className="max-w-xl mx-auto rich-text">
+                    <Img fluid={block.image.fluid} alt={block.image.alt} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </article>
     </Layout>
   )
@@ -78,71 +106,9 @@ const Post = ({ data }) => {
 export const query = graphql`
   query postQuery($id: String!) {
     datoCmsArticle(id: { eq: $id }) {
-      category {
-        id
-        tag
-      }
       title
       slug
       id
-      seoMetaTags {
-        tags
-      }
-      content {
-        ... on DatoCmsText {
-          id
-          text
-        }
-        ... on DatoCmsImage {
-          id
-          image {
-            url
-            title
-            alt
-            sizes {
-              tracedSVG
-              srcSet
-              src
-            }
-          }
-        }
-        ... on DatoCmsQuote {
-          id
-          author
-          quote
-        }
-        ... on DatoCmsTextImage {
-          id
-          text
-          image {
-            alt
-            sizes {
-              tracedSVG
-              srcSet
-              src
-            }
-            url
-            title
-            resolutions {
-              tracedSVG
-              srcSet
-              src
-            }
-            fluid {
-              tracedSVG
-              srcSet
-              src
-            }
-          }
-        }
-        ... on DatoCmsVideo {
-          id
-          video {
-            url
-            title
-          }
-        }
-      }
       publicationdate
       author {
         id
@@ -152,9 +118,78 @@ export const query = graphql`
           url
         }
       }
+      model {
+        apiKey
+      }
+      category {
+        id
+        tag
+      }
+      content {
+        ... on DatoCmsText {
+          id
+          text
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsImage {
+          id
+          image {
+            url
+            title
+            alt
+            fluid(maxWidth: 400, imgixParams: { auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+          }
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsQuote {
+          id
+          author
+          quote
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsTextImage {
+          id
+          text
+          image {
+            alt
+            url
+            title
+            fluid(maxWidth: 400, imgixParams: { auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+          }
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsVideo {
+          id
+          video {
+            url
+            title
+            height
+            width
+            provider
+            thumbnailUrl
+          }
+          model {
+            apiKey
+          }
+        }
+      }
+      seoMetaTags {
+        tags
+      }
     }
   }
 `
 
 export default Post
-// "id": "DatoCmsArticle-5202530-en"

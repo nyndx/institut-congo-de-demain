@@ -6,8 +6,8 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="px-6 mx-auto mt-8 space-y-8 md:mt-16">
-      <h1 className="text-xl italic sm:text-2xl md:text-3xl">
+    <div className="px-6 mx-auto mt-8 space-y-8 font-sans md:mt-16">
+      <p className="text-xl italic sm:text-2xl md:text-3xl">
         <em>
           "Lorsque nous nous y attendons le moins, la vie nous met au défi de
           tester notre courage et notre volonté de changer ; à un tel moment, il
@@ -16,8 +16,8 @@ const IndexPage = () => (
           pas en arrière. Une semaine est plus que suffisante pour nous
           permettre de décider si nous acceptons ou non notre destin".
         </em>
-      </h1>
-      <h2 className="text-lg text-right">- Paulo Coelho.</h2>
+      </p>
+      <span className="block text-lg text-right">- Paulo Coelho.</span>
     </div>
   </Layout>
 )

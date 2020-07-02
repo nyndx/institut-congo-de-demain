@@ -66,7 +66,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
           </button>
         </div>
         <div className="flex flex-col items-center justify-center w-full h-full text-white ">
-          <div className="flex flex-col items-center justify-center mt-8 space-y-8">
+          <div className="flex flex-col items-center justify-center mt-8 mb-4 space-y-8">
             <div className="">
               <div className="w-24 h-24 md:h-36 md:w-36">
                 <img
@@ -76,8 +76,9 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                 />
               </div>
             </div>
-            <h1 className="flex items-center font-sans font-bold leading-relaxed tracking-wide sm:text-2xl">
-              <span className="text-5xl">I</span>nstitut Congolais de demain
+            <h1 className="flex items-center font-sans text-base leading-relaxed tracking-wide sm:text-2xl ">
+              <span className="text-2xl sm:text-4xl">I</span>nstitut Congolais
+              de demain
             </h1>
           </div>
           <div className="hidden w-full max-w-3xl px-6 pt-6 mt-8 font-sans md:block">

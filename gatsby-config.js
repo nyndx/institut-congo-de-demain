@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Institut Congo de Demain`,
-    description: `Ad meliora`,
+    description: `L'institut congolais de demain est un centre de réflexion non partisan, à but non lucratif, qui se consacre à la promotion d'idées pratiques pour relever les plus grands défis auxquels est confrontée la république démocratique du congo.`,
     author: `@nynd_x`,
   },
   plugins: [
@@ -16,17 +16,6 @@ module.exports = {
         apiToken: process.env.DATA_API_TOKEN,
         preview: false,
         disableLiveReload: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Inter\:100,200,300,400,500,600,700,800,900`,
-          `Fira Sans\:100,200,300,400,500,600,700,800,900`,
-          `Rubik\:100,200,300,400,500,600,700,800,900`,
-        ],
-        display: "swap",
       },
     },
     {
