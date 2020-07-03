@@ -30,7 +30,7 @@ const Subjects = ({ data }) => {
               <h1 className="mb-0 text-gray-600 capitalize">
                 {subcategory.tag}
               </h1>
-              <div className="max-w-3xl lg:grid lg:grid-cols-2 lg:gap-4">
+              <div className="max-w-3xl lg:grid lg:grid-cols-2 lg:gap-6">
                 {articles.edges.map(({ node: article }) => {
                   const s = article.subcategory.map(({ id }) => id)
                   const yes = s.some(item => subcategory.id === item)

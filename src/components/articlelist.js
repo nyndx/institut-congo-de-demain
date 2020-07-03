@@ -20,7 +20,7 @@ const ArticleList = ({ data, category }) => {
         </p>
       )}
 
-      <div className="max-w-3xl mt-8 lg:grid lg:grid-cols-2 lg:gap-4">
+      <div className="max-w-3xl mt-8 lg:grid lg:grid-cols-2 lg:gap-6">
         {data.allDatoCmsArticle.edges.map(({ node: article }) => (
           <article key={article.id} className="py-8 space-y-2">
             <div className="h-full px-4 py-6 space-y-2 bg-gray-200 rounded-lg">
