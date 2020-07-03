@@ -9,7 +9,6 @@ const typographyTheme = typography({
   blockMarginBottom: 0.85,
   headerFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
   bodyFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
-  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({}),
 })
 
 // Option 2 - Using a theme
@@ -152,7 +151,7 @@ module.exports = {
             fontNamedInstance: "Italic",
             fontDisplay: "swap",
             src:
-              'url("/src//fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
+              'url("/src/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
           },
         },
       ])
