@@ -8,7 +8,7 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { Link } from "gatsby"
+
 import { HelmetDatoCms } from "gatsby-source-datocms"
 import Header from "./header"
 import MobileNav from "./mobilenav"
@@ -64,34 +64,7 @@ const Layout = ({ children }) => {
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
           <div className="container max-w-3xl p-8 mx-auto font-sans xl:max-w-4xl">
             <div className="mb-8">
-              {/* <ul className="flex flex-col w-full m-0 space-y-2">
-                <Link to="/">
-                  <li className="self-start pl-0 ml-0 tracking-widest hover:text-blue-400">
-                    Accueil
-                  </li>
-                </Link>
-                <Link to="/a-propos">
-                  <li className="tracking-widest hover:text-blue-400">
-                    A propos
-                  </li>
-                </Link>
-                <Link to="/analyses">
-                  <li className="tracking-widest hover:text-blue-400">
-                    Analyses
-                  </li>
-                </Link>
-                <Link to="/podcasts">
-                  <li className="tracking-widest hover:text-blue-400">
-                    Podcasts
-                  </li>
-                </Link>
-                <Link to="/contact">
-                  <li className="tracking-widest hover:text-blue-400">
-                    Contact
-                  </li>
-                </Link>
-              </ul> */}
-              <div className="">
+              <div>
                 <a
                   className="flex items-center text-base leading-6 uppercase"
                   href="mailto:name@rapidtables.com"

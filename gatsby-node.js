@@ -6,7 +6,6 @@
 
 // You can delete this file if you're not using it
 
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
 const slugify = require("slugify")
@@ -14,7 +13,7 @@ const slugify = require("slugify")
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const postTemplate = path.resolve("src/templates/post.js")
+  const postTemplate = path.resolve("./src/templates/post.js")
 
   const result = await graphql(`
     query {
