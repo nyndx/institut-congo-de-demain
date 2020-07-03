@@ -3,7 +3,8 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Institut Congo de Demain`,
-    description: `L'institut congolais de demain est un centre de réflexion non partisan, à but non lucratif, qui se consacre à la promotion d'idées pratiques pour relever les plus grands défis auxquels est confrontée la république démocratique du congo.`,
+    description: `L'institut congolais de demain est un centre de réflexion non partisan, à but non lucratif pour relever les plus grands défis de la R.D.C.`,
+    siteURL: `https://institut-congo-de-demain.netlify.app`,
     author: `@nynd_x`,
   },
   plugins: [
@@ -33,8 +34,8 @@ module.exports = {
         name: `Institut Congo de demain`,
         short_name: `ICD`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#7F9CF5`,
+        theme_color: `#7F9CF5`,
         display: `minimal-ui`,
         icon: `src/images/icd-icon.jpg`, // This path is relative to the root of the site.
       },
