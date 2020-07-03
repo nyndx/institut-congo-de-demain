@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
           setToggleNav={setToggleNav}
         />
         <main
-          className={`container px-8 mx-auto max-w-3xl xl:max-w-4xl mb-20 font-sans min-h-60vh font-sans `}
+          className={`container px-8 mx-auto max-w-3xl xl:max-w-4xl mb-20 min-h-60vh font-sans `}
         >
           {children}
         </main>
@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
               <div>
                 <a
                   className="flex items-center text-base leading-6 uppercase"
-                  href="mailto:name@rapidtables.com"
+                  href="mailto:institutcongo@gmail.com"
                 >
                   <span>contact us</span>
                   <svg
