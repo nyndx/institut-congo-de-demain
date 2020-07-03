@@ -1,10 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { format } from "date-fns"
 import ReactPlayer from "react-player"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 const Post = ({ data }) => {
   const author = data.datoCmsArticle.author
@@ -13,20 +13,11 @@ const Post = ({ data }) => {
   const date = data.datoCmsArticle.publicationdate
   const slug = data.datoCmsArticle.slug
   const title = data.datoCmsArticle.title
-  const cont = data.datoCmsArticle.content
-
-  // console.log(author)
-  // console.log(category)
-  // console.log(content)
-  // console.log(date)
-  // console.log(slug)
-  // console.log(title)
-  console.log(cont)
 
   return (
     <Layout>
-      <SEO title=""></SEO>
       <article className="mt-8 md:mt-10">
+        <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags}></HelmetDatoCms>
         <header className="pt-6 pb-10 space-y-4 text-center border-b border-gray-200">
           <time dateTime={date} className="mt-4 leading-6 text-gray-500">
             {format(new Date(date), "EEEE, MMMM d, y")}
@@ -59,7 +50,7 @@ const Post = ({ data }) => {
         </header>
         <div>
           <div className="mt-8 md:mt-10 prose">
-            {data.datoCmsArticle.content.map(block => (
+            {content.map(block => (
               <div key={block.id}>
                 {block.model.apiKey === "text" && (
                   <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
@@ -186,7 +177,7 @@ export const query = graphql`
         }
       }
       seoMetaTags {
-        tags
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }

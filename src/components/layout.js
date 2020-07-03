@@ -9,7 +9,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-
+import { HelmetDatoCms } from "gatsby-source-datocms"
 import Header from "./header"
 import MobileNav from "./mobilenav"
 
@@ -18,6 +18,16 @@ const Layout = ({ children }) => {
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
+      siteseo: datoCmsSiteseo {
+        seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
+      }
+      fav: datoCmsSite {
+        faviconMetaTags {
+          ...GatsbyDatoCmsFaviconMetaTags
+        }
+      }
       site {
         siteMetadata {
           title
@@ -28,6 +38,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <HelmetDatoCms
+        favicon={data.fav.faviconMetaTags}
+        seo={data.siteseo.seoMetaTags}
+      />
       <div
         className={`relative bg-white font-rubik ${
           toggleNav && "h-screen overflow-hidden"
