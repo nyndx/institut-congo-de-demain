@@ -146,8 +146,7 @@ module.exports = {
             fontStyle: "normal",
             fontNamedInstance: "Regular",
             fontDisplay: "swap",
-            src:
-              'url("/src/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
+            src: 'url("Inter-roman.var.woff2?v=3.13") format("woff2")',
           },
         },
         {
@@ -157,8 +156,7 @@ module.exports = {
             fontStyle: "italic",
             fontNamedInstance: "Italic",
             fontDisplay: "swap",
-            src:
-              'url("/src/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
+            src: 'url("Inter-italic.var.woff2?v=3.13") format("woff2")',
           },
         },
       ])
