@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="px-6 mx-auto mt-8 space-y-8 font-sans md:mt-16 prose">
+    <div className="mx-auto mt-8 space-y-8 font-sans md:px-6 md:mt-16 prose">
       <figure>
         <blockquote>
           <p className="text-xl italic sm:text-2xl md:text-3xl">

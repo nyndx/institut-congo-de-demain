@@ -9,6 +9,13 @@ const typographyTheme = typography({
   blockMarginBottom: 0.85,
   headerFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
   bodyFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
+
+  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+    blockquote: {
+      paddingLeft: 0,
+      marginLeft: 0,
+    },
+  }),
 })
 
 // Option 2 - Using a theme

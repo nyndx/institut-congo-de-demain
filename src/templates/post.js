@@ -57,7 +57,7 @@ const Post = ({ data }) => {
                 )}
                 {block.model.apiKey === "quote" && (
                   <figure>
-                    <blockquote>
+                    <blockquote className="">
                       <p dangerouslySetInnerHTML={{ __html: block.quote }}></p>
                     </blockquote>
                     <figcaption className="mr-8 text-right">
