@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
         <footer className="p-6 text-white min-h-30vh bg-cool-gray-900">
           <div className="container max-w-3xl p-8 mx-auto font-sans xl:max-w-4xl">
             <div className="mb-8">
-              <ul className="flex flex-col w-full m-0 space-y-2">
+              {/* <ul className="flex flex-col w-full m-0 space-y-2">
                 <Link to="/">
                   <li className="self-start pl-0 ml-0 tracking-widest hover:text-blue-400">
                     Accueil
@@ -90,7 +90,23 @@ const Layout = ({ children }) => {
                     Contact
                   </li>
                 </Link>
-              </ul>
+              </ul> */}
+              <div className="">
+                <a
+                  className="flex items-center text-base leading-6 uppercase"
+                  href="mailto:name@rapidtables.com"
+                >
+                  <span>contact us</span>
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    className="w-6 h-6 ml-2 text-white"
+                  >
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                </a>
+              </div>
             </div>
             <div className="text-sm font-light">
               <span className="font-medium">
