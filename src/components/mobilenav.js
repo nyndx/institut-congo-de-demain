@@ -159,11 +159,6 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
               podcasts
             </div>
           </Link>
-          <Link to="/contact" activeClassName="text-blue-400">
-            <div className="py-4 tracking-widest uppercase border-t border-b border-gray-100 hover:text-blue-400">
-              contact
-            </div>
-          </Link>
         </nav>
       </div>
     </div>

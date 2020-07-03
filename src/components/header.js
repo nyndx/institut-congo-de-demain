@@ -129,11 +129,6 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                   podcasts
                 </span>
               </Link>
-              <Link to="/contact" activeClassName="text-blue-400">
-                <span className="tracking-widest uppercase hover:text-blue-400">
-                  contact
-                </span>
-              </Link>
             </nav>
           </div>
         </div>
