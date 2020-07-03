@@ -93,6 +93,11 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                   a propos
                 </span>
               </Link>
+              <Link to="/recents" activeClassName="text-blue-400">
+                <span className="tracking-widest uppercase hover:text-blue-400">
+                  recents
+                </span>
+              </Link>
 
               <div className="relative px-4 pb-4 group">
                 <Link to="/analyses" activeClassName="text-blue-400">

@@ -32,6 +32,17 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
               Accueil
             </div>
           </Link>
+          <Link to="/recents" activeClassName="text-blue-400">
+            <div
+              className="py-4 tracking-widest uppercase border-t border-gray-100 hover:text-blue-400"
+              role="button"
+              tabIndex="-1"
+              onClick={() => setToggleNav(false)}
+              onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
+            >
+              recents
+            </div>
+          </Link>
           <Link to="/a-propos" activeClassName="text-blue-400">
             <div
               className="py-4 tracking-widest uppercase border-t border-gray-100 hover:text-blue-400"

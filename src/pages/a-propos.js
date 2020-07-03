@@ -8,7 +8,7 @@ const Apropos = () => {
       <SEO title="A propos"></SEO>
       <section className="mt-8 md:mt-10">
         <div className="space-y-10">
-          <h1 className="leading-9 tracking-tight text-gray-700  sm:leading-10 md:leading-14">
+          <h1 className="leading-9 tracking-tight text-gray-600 sm:leading-10 md:leading-14">
             Ce que nous sommes
           </h1>
           <div className="mt-6 space-y-6 text-lg md:text-xl">
