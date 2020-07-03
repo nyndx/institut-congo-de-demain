@@ -19,7 +19,7 @@ const Subjects = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Sous-Sujets"></SEO>
+      <SEO title="Analyses"></SEO>
       <div className="mt-8 md:mt-10">
         <h1 className="pb-4 text-lg font-medium tracking-wide text-blue-400 uppercase border-b-2 border-gray-200">
           Sous-Sujets
