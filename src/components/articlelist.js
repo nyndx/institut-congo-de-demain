@@ -20,52 +20,52 @@ const ArticleList = ({ data, category }) => {
         </p>
       )}
 
-      <div className="max-w-3xl mt-8">
+      <div className="max-w-3xl mt-8 lg:grid lg:grid-cols-2 lg:gap-4">
         {data.allDatoCmsArticle.edges.map(({ node: article }) => (
           <article key={article.id} className="py-8 space-y-2">
-            <time
-              dateTime={article.publicationdate}
-              className="mt-4 leading-6 text-gray-500"
-            >
-              {format(new Date(article.publicationdate), "MMMM d, y")}
-            </time>
-            <div className="space-y-6">
-              <h2 className="mb-4 text-xl font-medium text-gray-700 md:text-2xl">
-                <Link
-                  to={`/analyses/${slug(article.category.tag)}/${slug(
-                    article.slug
-                  )}`}
-                >
-                  {article.title}
-                </Link>
-              </h2>
-
-              <Link
-                to={`/analyses/${slug(article.category.tag)}/${slug(
-                  article.slug
-                )}`}
+            <div className="h-full px-4 py-6 space-y-2 bg-gray-200 rounded-lg">
+              <time
+                dateTime={article.publicationdate}
+                className="mt-4 leading-6 text-gray-500"
               >
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: article.excerpt,
-                  }}
-                ></p>
-              </Link>
+                {format(new Date(article.publicationdate), "MMMM d, y")}
+              </time>
+              <div className="space-y-6">
+                <h2 className="mb-4 text-xl md:text-2xl ">
+                  <Link
+                    to={`/analyses/${slug(article.category.tag)}/${slug(
+                      article.slug
+                    )}`}
+                  >
+                    {article.title}
+                  </Link>
+                </h2>
 
-              <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
                 <Link
                   to={`/analyses/${slug(article.category.tag)}/${slug(
                     article.slug
                   )}`}
                 >
-                  <span className="flex items-center ">
-                    <span>Read more </span>
-                    <span className="ml-2 group-hover:text-blue-500">
-                      &#8594;
-                    </span>
-                  </span>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: article.excerpt,
+                    }}
+                  ></p>
                 </Link>
-              </p>
+
+                <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
+                  <Link
+                    to={`/analyses/${slug(article.category.tag)}/${slug(
+                      article.slug
+                    )}`}
+                  >
+                    <span className="flex items-center hover:text-blue-500 ">
+                      <span>Read more </span>
+                      <span className="ml-2">&#8594;</span>
+                    </span>
+                  </Link>
+                </p>
+              </div>
             </div>
           </article>
         ))}

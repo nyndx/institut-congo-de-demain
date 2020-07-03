@@ -23,41 +23,43 @@ const Analyses = ({ data }) => {
         <div className="max-w-3xl mt-8">
           {data.allDatoCmsArticle.edges.map(({ node: article }) => (
             <article key={article.id} className="py-8 space-y-2">
-              <time
-                dateTime={article.publicationdate}
-                className="mt-4 leading-6 text-gray-500"
-              >
-                {format(new Date(article.publicationdate), "MMMM d, y")}
-              </time>
-              <div className="pt-2 space-y-6">
-                <h2 className="mb-4 text-xl font-medium md:text-2xl">
-                  <Link
-                    to={`/analyses/${slug(article.category.tag)}/${slug(
-                      article.slug
-                    )}`}
-                  >
-                    {article.title}
-                  </Link>
-                </h2>
+              <div className="h-full px-4 py-6 space-y-2 bg-gray-200 rounded-lg">
+                <time
+                  dateTime={article.publicationdate}
+                  className="mt-4 leading-6 text-gray-500"
+                >
+                  {format(new Date(article.publicationdate), "MMMM d, y")}
+                </time>
+                <div className="pt-2 space-y-6">
+                  <h2 className="mb-4 text-xl md:text-2xl">
+                    <Link
+                      to={`/analyses/${slug(article.category.tag)}/${slug(
+                        article.slug
+                      )}`}
+                    >
+                      {article.title}
+                    </Link>
+                  </h2>
 
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: article.excerpt,
-                  }}
-                ></p>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: article.excerpt,
+                    }}
+                  ></p>
 
-                <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
-                  <Link
-                    to={`/analyses/${slug(article.category.tag)}/${slug(
-                      article.slug
-                    )}`}
-                  >
-                    <span className="flex items-center hover:text-blue-500">
-                      <span className="p-0 py-2">Read more </span>
-                      <span className="p-0 py-2 ml-2">&#8594;</span>
-                    </span>
-                  </Link>
-                </p>
+                  <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
+                    <Link
+                      to={`/analyses/${slug(article.category.tag)}/${slug(
+                        article.slug
+                      )}`}
+                    >
+                      <span className="flex items-center hover:text-blue-500">
+                        <span className="p-0 py-2">Read more </span>
+                        <span className="p-0 py-2 ml-2">&#8594;</span>
+                      </span>
+                    </Link>
+                  </p>
+                </div>
               </div>
             </article>
           ))}
