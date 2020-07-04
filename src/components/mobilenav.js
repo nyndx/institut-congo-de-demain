@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
+import { slug } from "../utils"
+import { useSubnav } from "../hooks"
 
 const MobileNav = ({ toggleNav, setToggleNav }) => {
   const [toggleSubNav, setSubNav] = useState(false)
+  const navLinks = useSubnav()
 
   return (
     <div className="fixed z-20 w-full h-screen px-8 pt-6 text-white bg-gray-900 md:hidden">
@@ -41,17 +44,6 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
               onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
             >
               recents
-            </div>
-          </Link>
-          <Link to="/a-propos" activeClassName="text-blue-400">
-            <div
-              className="py-4 tracking-widest uppercase border-t border-gray-100 hover:text-blue-400"
-              role="button"
-              tabIndex="-1"
-              onClick={() => setToggleNav(false)}
-              onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-            >
-              a propos
             </div>
           </Link>
 
@@ -95,72 +87,19 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
 
             <div className={`ml-4 ${toggleSubNav ? "block" : "hidden"}`}>
               <div className="space-y-4 tracking-widest">
-                <Link to="/analyses/technologie">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    technologie
-                  </div>
-                </Link>
-                <Link to="/analyses/economie">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    economie
-                  </div>
-                </Link>
-                <Link to="/analyses/social">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    social
-                  </div>
-                </Link>
-                <Link to="/analyses/legislation-et-reglementations">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    legislation et reglementations
-                  </div>
-                </Link>
-                <Link to="/analyses/politique">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    politique
-                  </div>
-                </Link>
-                <Link to="/analyses/environment">
-                  <div
-                    className="py-4 border-t border-gray-100"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() => setToggleNav(false)}
-                    onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
-                  >
-                    environment
-                  </div>
-                </Link>
+                {navLinks.map(link => (
+                  <Link key={link} to={`/analyses/${slug(link)}`}>
+                    <div
+                      className="py-4 border-t border-gray-100"
+                      role="button"
+                      tabIndex="-1"
+                      onClick={() => setToggleNav(false)}
+                      onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
+                    >
+                      {link}
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -168,6 +107,17 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
           <Link to="/podcasts" activeClassName="text-blue-400">
             <div className="py-4 tracking-widest uppercase border-t border-gray-100 hover:text-blue-400">
               podcasts
+            </div>
+          </Link>
+          <Link to="/a-propos" activeClassName="text-blue-400">
+            <div
+              className="py-4 tracking-widest uppercase border-t border-gray-100 hover:text-blue-400"
+              role="button"
+              tabIndex="-1"
+              onClick={() => setToggleNav(false)}
+              onKeyDown={e => e.key === "Enter" && setToggleNav(false)}
+            >
+              a propos
             </div>
           </Link>
         </nav>

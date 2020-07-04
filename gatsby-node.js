@@ -14,10 +14,11 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   const postTemplate = path.resolve("./src/templates/post.js")
+  const categoriesTemplate = path.resolve("./src/templates/categories.js")
 
   const result = await graphql(`
     query {
-      allDatoCmsArticle {
+      articles: allDatoCmsArticle {
         edges {
           node {
             slug
@@ -25,24 +26,57 @@ exports.createPages = async ({ actions, graphql }) => {
             category {
               tag
             }
+            subcategory {
+              tag
+              id
+            }
+          }
+        }
+      }
+
+      categories: allDatoCmsCategory {
+        edges {
+          node {
+            id
+            tag
           }
         }
       }
     }
   `)
 
-  const posts = result.data.allDatoCmsArticle.edges
+  const posts = result.data.articles.edges
+  const categories = result.data.categories.edges
 
-  posts.forEach(({ node: post }) => {
+  categories.forEach(({ node: category }) => {
     createPage({
-      path: `/analyses/${slugify(post.category.tag, {
+      path: `/analyses/${slugify(category.tag, {
         replacement: "-",
         lower: true,
-      })}/${slugify(post.slug, { replacement: "-", lower: true })}`,
-      component: postTemplate,
+      })}`,
+      component: categoriesTemplate,
       context: {
-        id: post.id,
+        id: category.id,
+        title: category.tag,
       },
+    })
+  })
+
+  posts.forEach(({ node: post }) => {
+    post.subcategory.forEach(item => {
+      createPage({
+        path: `/analyses/${slugify(post.category.tag, {
+          replacement: "-",
+          lower: true,
+        })}/${slugify(item.tag, {
+          replacement: "-",
+          lower: true,
+        })}/${slugify(post.slug, { replacement: "-", lower: true })}`,
+        component: postTemplate,
+        context: {
+          id: post.id,
+        },
+      })
     })
   })
 }

@@ -8,10 +8,8 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 
 const Post = ({ data }) => {
   const author = data.datoCmsArticle.author
-  const category = data.datoCmsArticle.category
   const content = data.datoCmsArticle.content
   const date = data.datoCmsArticle.publicationdate
-  const slug = data.datoCmsArticle.slug
   const title = data.datoCmsArticle.title
 
   return (

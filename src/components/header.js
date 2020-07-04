@@ -2,6 +2,8 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { useSubnav } from "../hooks"
+import { slug } from "../utils/index"
 
 const SubnavItem = props => (
   <div className="px-4 py-1 mb-2 rounded-sm hover:text-blue-400">
@@ -42,6 +44,8 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
       }
     }
   `)
+
+  const navlinks = useSubnav()
   return (
     <header
       className="relative object-cover w-full bg-center bg-cover md:min-h-24rem font-rubik"
@@ -88,11 +92,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                   Accueil
                 </span>
               </Link>
-              <Link to="/a-propos" activeClassName="text-blue-400">
-                <span className="tracking-widest uppercase hover:text-blue-400">
-                  a propos
-                </span>
-              </Link>
+
               <Link to="/recents" activeClassName="text-blue-400">
                 <span className="tracking-widest uppercase hover:text-blue-400">
                   recents
@@ -107,24 +107,11 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                 </Link>
                 <div className="absolute z-30 hidden py-2 mt-2 text-white uppercase bg-gray-900 rounded-md shadow-md min-h-10rem group-hover:block hover:block">
                   <div className="space-y-4 text-xs tracking-wide">
-                    <Link to="/analyses/technologie">
-                      <SubnavItem>technologie</SubnavItem>
-                    </Link>
-                    <Link to="/analyses/economie">
-                      <SubnavItem>economie</SubnavItem>
-                    </Link>
-                    <Link to="/analyses/social">
-                      <SubnavItem>social</SubnavItem>
-                    </Link>
-                    <Link to="/analyses/legislation-et-reglementations">
-                      <SubnavItem>legislation et reglementations</SubnavItem>
-                    </Link>
-                    <Link to="/analyses/politique">
-                      <SubnavItem>politique</SubnavItem>
-                    </Link>
-                    <Link to="/analyses/environment">
-                      <SubnavItem>environment</SubnavItem>
-                    </Link>
+                    {navlinks.map(link => (
+                      <Link key={link} to={`/analyses/${slug(link)}`}>
+                        <SubnavItem>{link}</SubnavItem>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -132,6 +119,11 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
               <Link to="/podcasts" activeClassName="text-blue-400">
                 <span className="tracking-widest uppercase hover:text-blue-400">
                   podcasts
+                </span>
+              </Link>
+              <Link to="/a-propos" activeClassName="text-blue-400">
+                <span className="tracking-widest uppercase hover:text-blue-400">
+                  a propos
                 </span>
               </Link>
             </nav>

@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Institut Congo de Demain`,
     description: `L'institut congolais de demain est un centre de réflexion non partisan, à but non lucratif pour relever les plus grands défis de la R.D.C.`,
-    siteURL: `https://institut-congo-de-demain.com`,
+    siteUrl: `https://institut-congo-de-demain.com`,
 
     author: `@nynd_x`,
   },

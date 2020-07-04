@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
           setToggleNav={setToggleNav}
         />
         <main
-          className={`container px-8 mx-auto max-w-3xl xl:max-w-4xl mb-20 min-h-60vh font-sans `}
+          className={`container px-8 mt-6 mx-auto max-w-3xl xl:max-w-4xl mb-20 min-h-60vh font-sans `}
         >
           {children}
         </main>

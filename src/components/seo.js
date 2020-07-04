@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
-            siteURL
+            siteUrl
           }
         }
       }
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <link rel="canonical" href={site.siteMetadata.siteURL} />
+      <link rel="canonical" href={site.siteMetadata.siteUrl} />
     </Helmet>
   )
 }
