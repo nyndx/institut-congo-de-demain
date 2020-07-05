@@ -5,7 +5,15 @@ import { Link, graphql } from "gatsby"
 import { slug } from "../utils"
 
 const Subjects = ({ data }) => {
-  const { articles, sub } = data
+  const { articles } = data
+
+  const s = articles.edges.flatMap(({ node: a }) =>
+    a.subcategory.map(i => i.tag)
+  )
+
+  const subs = [...new Set(s)]
+
+  console.log(subs)
 
   return (
     <Layout>
@@ -15,58 +23,54 @@ const Subjects = ({ data }) => {
           Sous-Sujets
         </h1>
         <div>
-          {sub.edges.map(({ node: subcategory }) => (
-            <div key={subcategory.id} className="mt-8">
-              <h1 className="mb-0 text-gray-600 capitalize">
-                {subcategory.tag}
-              </h1>
+          {subs.map(s => (
+            <div key={s} className="mt-8">
+              <h1 className="mb-0 text-gray-600 capitalize ">{s}</h1>
               <div className="max-w-3xl lg:grid lg:grid-cols-2 lg:gap-6">
                 {articles.edges.map(({ node: article }) => {
                   return article.subcategory.map(sub => {
-                    const yes = sub.id === subcategory.id
+                    const yes = sub.tag.toLowerCase() === s.toLowerCase()
                     return (
                       yes && (
-                        <div>
-                          <article key={article.id} className="py-6 space-y-2 ">
-                            <div className="h-full px-4 py-6 space-y-2 bg-gray-200 rounded-lg ">
-                              <div className="space-y-6">
-                                <h2 className="mb-4 text-xl md:text-2xl">
-                                  <Link
-                                    to={`/analyses/${slug(
-                                      article.category.tag
-                                    )}/${slug(sub.tag)}/${slug(article.slug)}`}
-                                  >
-                                    {article.title}
-                                  </Link>
-                                </h2>
+                        <article key={article.id} className="py-6 space-y-2 ">
+                          <div className="h-full px-4 py-6 space-y-2 bg-gray-200 rounded-lg ">
+                            <div className="space-y-6">
+                              <h2 className="mb-4 text-xl md:text-2xl">
                                 <Link
                                   to={`/analyses/${slug(
                                     article.category.tag
-                                  )}/${slug(sub.tag)}/${slug(article.slug)}`}
+                                  )}/${slug(article.slug)}`}
                                 >
-                                  <p
-                                    dangerouslySetInnerHTML={{
-                                      __html: article.excerpt,
-                                    }}
-                                  ></p>
+                                  {article.title}
                                 </Link>
+                              </h2>
+                              <Link
+                                to={`/analyses/${slug(
+                                  article.category.tag
+                                )}/${slug(article.slug)}`}
+                              >
+                                <p
+                                  dangerouslySetInnerHTML={{
+                                    __html: article.excerpt,
+                                  }}
+                                ></p>
+                              </Link>
 
-                                <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
-                                  <Link
-                                    to={`/analyses/${slug(
-                                      article.category.tag
-                                    )}/${slug(sub.tag)}/${slug(article.slug)}`}
-                                  >
-                                    <span className="flex items-center hover:text-blue-500 ">
-                                      <span>Read more </span>
-                                      <span className="ml-2">&#8594;</span>
-                                    </span>
-                                  </Link>
-                                </p>
-                              </div>
+                              <p className="text-base font-medium leading-6 text-gray-700 hover:text-gray-800 group">
+                                <Link
+                                  to={`/analyses/${slug(
+                                    article.category.tag
+                                  )}/${slug(article.slug)}`}
+                                >
+                                  <span className="flex items-center hover:text-blue-500 ">
+                                    <span>Read more </span>
+                                    <span className="ml-2">&#8594;</span>
+                                  </span>
+                                </Link>
+                              </p>
                             </div>
-                          </article>
-                        </div>
+                          </div>
+                        </article>
                       )
                     )
                   })
@@ -82,7 +86,9 @@ const Subjects = ({ data }) => {
 
 export const query = graphql`
   query Subjects {
-    articles: allDatoCmsArticle {
+    articles: allDatoCmsArticle(
+      sort: { fields: publicationdate, order: DESC }
+    ) {
       edges {
         node {
           title
@@ -97,14 +103,6 @@ export const query = graphql`
             id
             tag
           }
-        }
-      }
-    }
-    sub: allDatoCmsSubcategory {
-      edges {
-        node {
-          tag
-          id
         }
       }
     }

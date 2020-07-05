@@ -1,28 +1,30 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { graphql } from "gatsby"
 import ArticleList from "../components/articlelist"
 
-const Categories = ({ pageContext, data }) => {
-  console.log(data)
+import { graphql } from "gatsby"
+const Sub = ({ pageContext, data }) => {
   return (
     <Layout>
-      <SEO title={pageContext.title}></SEO>
-
-      <ArticleList
-        data={data}
-        category={pageContext.title}
-        show={true}
-      ></ArticleList>
+      <SEO title={pageContext.tag}></SEO>
+      <div className="mt-8 md:mt-10">
+        <h1 className="pb-4 text-lg italic font-medium tracking-wide text-blue-400 border-b-2 border-gray-200">
+          Articles dans # {pageContext.tag}
+        </h1>
+        <div>
+          <ArticleList data={data} show={false} />
+        </div>
+      </div>
     </Layout>
   )
 }
+
 export const query = graphql`
-  query Categories($id: String!) {
+  query Sub($id: String!) {
     allDatoCmsArticle(
       sort: { fields: publicationdate, order: DESC }
-      filter: { category: { id: { eq: $id } } }
+      filter: { subcategory: { elemMatch: { id: { eq: $id } } } }
     ) {
       edges {
         node {
@@ -43,4 +45,5 @@ export const query = graphql`
     }
   }
 `
-export default Categories
+
+export default Sub

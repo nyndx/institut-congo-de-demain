@@ -5,21 +5,36 @@ import Layout from "../components/layout"
 import { format } from "date-fns"
 import ReactPlayer from "react-player"
 import { HelmetDatoCms } from "gatsby-source-datocms"
+import { Link } from "gatsby"
+import { slug } from "../utils"
 
 const Post = ({ data }) => {
   const author = data.datoCmsArticle.author
   const content = data.datoCmsArticle.content
   const date = data.datoCmsArticle.publicationdate
   const title = data.datoCmsArticle.title
+  const sub = data.datoCmsArticle.subcategory
 
   return (
     <Layout>
       <article className="mt-8 md:mt-10">
         <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags}></HelmetDatoCms>
         <header className="pt-6 pb-10 space-y-4 text-center border-b border-gray-200">
-          <time dateTime={date} className="mt-4 leading-6 text-gray-500">
-            {format(new Date(date), "EEEE, MMMM d, y")}
-          </time>
+          <div className="flex justify-center mb-12 text-sm italic font-semibold text-blue-400 uppercase hover:text-blue-500">
+            {sub.map(item => (
+              <Link
+                to={`/sous-sujet/${slug(item.tag, {
+                  replacement: "-",
+                  lower: true,
+                })}`}
+              >
+                <p key={item.id} className="px-2">
+                  # {item.tag}
+                </p>
+              </Link>
+            ))}
+          </div>
+
           <div className="space-y-8">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-700 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {title}
@@ -31,15 +46,17 @@ const Post = ({ data }) => {
                     className="flex justify-center m-0 mr-4 space-x-8"
                     key={author.id}
                   >
-                    <li className="flex items-center space-x-2">
+                    <li className="flex items-center space-x-2 italic">
                       <img
                         src={author.image.url}
                         alt={author.image.alt}
                         className="w-6 h-6 m-0 border-2 rounded-full "
                       />
-                      <p className="m-0 text-sm font-medium leading-5 whitespace-no-wrap">
-                        {author.name}
-                      </p>
+                      <Link to={`/${slug(author.name)}`}>
+                        <p className="m-0 text-sm font-medium leading-5 text-blue-400 whitespace-no-wrap hover:text-blue-500">
+                          {author.name}
+                        </p>
+                      </Link>
                     </li>
                   </ul>
                 ))}
@@ -87,6 +104,13 @@ const Post = ({ data }) => {
             ))}
           </div>
         </div>
+        <div className="mt-16 italic text-blue-400 ">
+          <div className="w-16 mb-2 border-4 border-blue-400"></div>
+          <span class> Publié: </span>
+          <time dateTime={date} className="mt-4 leading-6 text-gray-500">
+            {format(new Date(date), "EEEE, MMMM d, y")}
+          </time>
+        </div>
       </article>
     </Layout>
   )
@@ -111,6 +135,10 @@ export const query = graphql`
         apiKey
       }
       category {
+        id
+        tag
+      }
+      subcategory {
         id
         tag
       }

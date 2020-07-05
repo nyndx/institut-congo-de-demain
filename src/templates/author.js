@@ -4,22 +4,15 @@ import SEO from "../components/seo"
 import ArticleList from "../components/articlelist"
 
 import { graphql } from "gatsby"
-
-const Recents = ({ data }) => {
+const Author = ({ pageContext, data }) => {
   return (
     <Layout>
-      <SEO title="Recents"></SEO>
+      <SEO title={pageContext.name}></SEO>
       <div className="mt-8 md:mt-10">
-        <h1 className="pb-4 text-lg font-medium tracking-wide text-blue-400 uppercase border-b-2 border-gray-200">
-          Articles recents
+        <h1 className="pb-4 text-lg italic font-medium tracking-wide text-blue-400 border-b-2 border-gray-200">
+          Articles par {pageContext.name}
         </h1>
-
-        {!data.allDatoCmsArticle.edges.length && (
-          <p className="mt-20 text-2xl text-center text-gray-500">
-            Pas d'articles pour le moment, revenez plus tard!
-          </p>
-        )}
-        <div className="max-w-3xl mt-8">
+        <div>
           <ArticleList data={data} show={false} />
         </div>
       </div>
@@ -28,10 +21,10 @@ const Recents = ({ data }) => {
 }
 
 export const query = graphql`
-  query {
+  query Author($id: String!) {
     allDatoCmsArticle(
       sort: { fields: publicationdate, order: DESC }
-      limit: 25
+      filter: { author: { elemMatch: { id: { eq: $id } } } }
     ) {
       edges {
         node {
@@ -53,4 +46,4 @@ export const query = graphql`
   }
 `
 
-export default Recents
+export default Author
