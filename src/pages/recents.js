@@ -13,12 +13,6 @@ const Recents = ({ data }) => {
         <h1 className="pb-4 text-lg font-medium tracking-wide text-blue-400 uppercase border-b-2 border-gray-200">
           Articles recents
         </h1>
-
-        {!data.allDatoCmsArticle.edges.length && (
-          <p className="mt-20 text-2xl text-center text-gray-500">
-            Pas d'articles pour le moment, revenez plus tard!
-          </p>
-        )}
         <div className="max-w-3xl mt-8">
           <ArticleList data={data} show={false} />
         </div>

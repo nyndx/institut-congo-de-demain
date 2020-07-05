@@ -13,8 +13,6 @@ const Subjects = ({ data }) => {
 
   const subs = [...new Set(s)]
 
-  console.log(subs)
-
   return (
     <Layout>
       <SEO title="Analyses"></SEO>
@@ -23,6 +21,11 @@ const Subjects = ({ data }) => {
           Sous-Sujets
         </h1>
         <div>
+          {!articles.edges.length && (
+            <p className="mt-20 text-2xl text-center text-gray-600">
+              Pas d'articles pour le moment, revenez plus tard!
+            </p>
+          )}
           {subs.map(s => (
             <div key={s} className="mt-8">
               <h1 className="mb-0 text-gray-600 capitalize ">{s}</h1>
