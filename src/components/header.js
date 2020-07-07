@@ -5,6 +5,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { useSubnav } from "../hooks"
 import { slug } from "../utils/index"
 
+import BackgroundHeader from "./backgroundHeader"
+
 const SubnavItem = props => (
   <div className="px-4 py-1 mb-2 rounded-sm hover:text-blue-400">
     <span className="flex items-center justify-between group">
@@ -47,10 +49,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
 
   const navlinks = useSubnav()
   return (
-    <header
-      className="relative object-cover w-full bg-center bg-cover md:min-h-24rem font-rubik"
-      style={{ backgroundImage: `url(${bgImg.sharp.fluid.src}) ` }}
-    >
+    <BackgroundHeader className="relative w-full bg-center bg-cover md:min-h-24rem">
       <div className="w-full h-full bg-black bg-opacity-50 md:min-h-24rem">
         <div className="flex justify-end md:hidden">
           <button
@@ -76,7 +75,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
         <div className="flex flex-col items-center justify-center w-full h-full text-white ">
           <div className="flex flex-col items-center justify-center mt-8 mb-4 space-y-8">
             <div className="">
-              <div className="w-24 h-24 md:h-36 md:w-36">
+              <div className="w-20 h-20 md:h-32 md:w-32">
                 <img
                   src={logo.sharp.fluid.src}
                   className="w-full h-full"
@@ -134,7 +133,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
           </div>
         </div>
       </div>
-    </header>
+    </BackgroundHeader>
   )
 }
 

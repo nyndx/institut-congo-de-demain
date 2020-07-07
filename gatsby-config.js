@@ -16,6 +16,13 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
+      resolve: "gatsby-background-image-es5",
+      options: {
+        // add your own characters to escape, replacing the default ':/'
+        specialChars: "/:",
+      },
+    },
+    {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: process.env.DATA_API_TOKEN,

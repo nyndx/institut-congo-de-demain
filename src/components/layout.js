@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
         seo={data.siteseo.seoMetaTags}
       />
       <div
-        className={`relative bg-white font-rubik ${
+        className={`relative bg-white ${
           toggleNav && "h-screen overflow-hidden"
         }`}
       >
