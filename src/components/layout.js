@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
                 <a
                   className="flex items-center text-base leading-6 uppercase"
                   href="mailto:institutcongo@gmail.com"
-                  name="Email link"
+                  title="Email link"
                 >
                   <FontAwesomeIcon
                     icon={"paper-plane"}
@@ -84,7 +84,7 @@ const Layout = ({ children }) => {
                 <a
                   className="flex items-center text-base leading-6 uppercase"
                   href="https://twitter.com/icdde"
-                  name="twitter account"
+                  title="twitter account"
                 >
                   <FontAwesomeIcon
                     icon={["fab", "twitter"]}
