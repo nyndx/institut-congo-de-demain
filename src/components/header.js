@@ -53,7 +53,11 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
     >
       <div className="w-full h-full bg-black bg-opacity-50 md:min-h-24rem">
         <div className="flex justify-end md:hidden">
-          <button className="mt-6 mr-8" onClick={() => setToggleNav(true)}>
+          <button
+            name="toggle mobile navigation"
+            className="mt-6 mr-8"
+            onClick={() => setToggleNav(true)}
+          >
             <span>
               <svg
                 fill="currentColor"
