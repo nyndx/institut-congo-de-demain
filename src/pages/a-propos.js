@@ -13,19 +13,26 @@ const Apropos = () => {
           </h1>
           <div className="mt-6 space-y-6 text-lg md:text-xl">
             <p>
-              L'institut congolais de demain est un centre de réflexion non
-              partisan, à but non lucratif, qui se consacre à la promotion
-              d'idées pratiques pour relever les plus grands défis auxquels est
+              Institut congolais de demain est une organisation à but non
+              lucratif et non partisane qui se consacre à la promotion d'idées
+              pratiques pour relever les plus grands défis auxquels est
               confrontée la république démocratique du congo.
             </p>
             <p>
-              Il a pour mission de promouvoir et d'élaborer des politiques
-              publiques fondées sur les idées de réforme sociale, de libre
-              marché, de gouvernement limité, de valeurs congolaises
-              conservatrices et de paix ,Nous pensons fermement qu'un
-              gouvernement efficace peut gagner la confiance de la population et
-              etre un moteur , d'innovation, de croissance , de développement et
-              de stabilité
+              un groupe de réflexion composé des jeunes congolais issus de
+              différents milieux professionnels ,éducatifs et de divers secteurs
+              de la société à travers le monde. sa mission est de promouvoir et
+              de proposer des politiques publiques en matière de réforme
+              sociale, d'ordre public, de libre entreprise, de gouvernance
+              efficace et de paix.
+            </p>
+            <p>
+              Nous pensons que ces idées, basées sur l'emblème de la RDC
+              (justice, Paix et travail), qui est le fondement de notre pays,
+              méritent d'être préservées et renouvelées. Nous croyons que les
+              solutions les plus efficaces sont en accord avec ces idées et
+              peuvent être un moteur de croissance, de développement et de
+              stabilité pour notre nation.
             </p>
           </div>
         </div>

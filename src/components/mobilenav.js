@@ -8,7 +8,7 @@ const MobileNav = ({ toggleNav, setToggleNav }) => {
   const navLinks = useSubnav()
 
   return (
-    <div className="fixed z-20 w-full h-screen px-8 pt-6 text-white bg-gray-900 md:hidden">
+    <div className="fixed z-20 w-full h-screen px-8 pt-6 overflow-y-auto text-white bg-gray-900 md:hidden">
       <div className="flex justify-end mb-8">
         <button onClick={() => setToggleNav(false)}>
           <div>

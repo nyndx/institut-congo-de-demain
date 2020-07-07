@@ -130,11 +130,6 @@ module.exports = {
     display: ["focus", "responsive", "hover", "group-hover"],
     margin: ["focus", "responsive", "hover", "group-hover"],
   },
-  handler: function ({ addComponents, theme }) {
-    addComponents({
-      ".rich-text": theme("typography"),
-    })
-  },
   plugins: [
     require("@tailwindcss/ui"),
     function ({ addBase, addComponents, theme }) {
