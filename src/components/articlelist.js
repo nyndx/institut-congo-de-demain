@@ -18,7 +18,7 @@ const ArticleList = ({ data, category, show }) => {
       )}
 
       {!data.allDatoCmsArticle.edges.length && (
-        <p className="mt-20 text-2xl text-center text-gray-600">
+        <p className="mt-20 text-lg text-center text-gray-600 md:text-xl">
           Pas d'articles pour le moment, revenez plus tard!
         </p>
       )}

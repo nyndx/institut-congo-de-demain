@@ -25,15 +25,8 @@ const SubnavItem = props => (
 )
 
 const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
-  const { bgImg, logo } = useStaticQuery(graphql`
+  const { logo } = useStaticQuery(graphql`
     query MyQuery {
-      bgImg: file(relativePath: { eq: "trevor-cole-unsplash.jpg" }) {
-        sharp: childImageSharp {
-          fluid(fit: COVER, maxWidth: 2400) {
-            src
-          }
-        }
-      }
       logo: file(relativePath: { eq: "icd-icon.jpg" }) {
         sharp: childImageSharp {
           fluid(fit: COVER) {
@@ -83,7 +76,7 @@ const Header = ({ siteTitle, toggleNav, setToggleNav }) => {
                 />
               </div>
             </div>
-            <h1 className="flex items-center font-sans text-base leading-relaxed tracking-wide sm:text-2xl ">
+            <h1 className="flex items-center font-sans text-base leading-relaxed tracking-wide text-white sm:text-2xl">
               <span className="text-2xl sm:text-4xl">I</span>nstitut Congo de
               demain
             </h1>

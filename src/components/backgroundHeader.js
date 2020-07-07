@@ -10,14 +10,14 @@ const BackgroundHeader = ({ className, children, ...props }) => {
       query {
         mobileImage: file(relativePath: { eq: "trevor-cole-unsplash.jpg" }) {
           sharp: childImageSharp {
-            fluid(quality: 100, maxWidth: 640) {
+            fluid(quality: 100, maxWidth: 768) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
         desktopImage: file(relativePath: { eq: "annie-unsplash.jpg" }) {
           sharp: childImageSharp {
-            fluid(quality: 100, maxWidth: 4160) {
+            fluid(quality: 100, maxWidth: 2048) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -32,7 +32,7 @@ const BackgroundHeader = ({ className, children, ...props }) => {
     mobileImage.sharp.fluid,
     {
       ...desktopImage.sharp.fluid,
-      media: `(min-width: 640px)`,
+      media: `(min-width: 768px)`,
     },
   ]
 
@@ -42,8 +42,6 @@ const BackgroundHeader = ({ className, children, ...props }) => {
       id={`media-test`}
       className={className}
       fluid={sources}
-      id="gbitest"
-      role="img"
     >
       <div>{children}</div>
     </BackgroundImage>

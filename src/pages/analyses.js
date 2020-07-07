@@ -22,7 +22,7 @@ const Subjects = ({ data }) => {
         </h1>
         <div>
           {!articles.edges.length && (
-            <p className="mt-20 text-2xl text-center text-gray-600">
+            <p className="mt-20 text-lg text-center text-gray-600 md:text-xl">
               Pas d'articles pour le moment, revenez plus tard!
             </p>
           )}
