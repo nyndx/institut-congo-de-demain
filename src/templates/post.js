@@ -7,8 +7,9 @@ import ReactPlayer from "react-player"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 import { Link } from "gatsby"
 import { slug } from "../utils"
+import SEO from "../components/seo"
 
-const Post = ({ data }) => {
+const Post = ({ data, location }) => {
   const author = data.datoCmsArticle.author
   const content = data.datoCmsArticle.content
   const date = data.datoCmsArticle.publicationdate
@@ -18,6 +19,7 @@ const Post = ({ data }) => {
   return (
     <Layout>
       <article className="mt-8 md:mt-10">
+        <SEO pathname={location.pathname} />
         <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags}></HelmetDatoCms>
         <header className="pt-6 pb-10 space-y-4 text-center border-b border-gray-200">
           <div className="flex flex-wrap justify-center mb-8 text-sm italic font-semibold text-blue-400 uppercase hover:text-blue-500">

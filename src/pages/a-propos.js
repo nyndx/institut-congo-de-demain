@@ -2,10 +2,10 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Apropos = () => {
+const Apropos = ({ location }) => {
   return (
     <Layout>
-      <SEO title="A propos"></SEO>
+      <SEO title="A propos" pathname={location.pathname}></SEO>
       <section className="mt-8 md:mt-10">
         <div className="space-y-10">
           <h1 className="leading-9 tracking-tight text-gray-600 sm:leading-10 md:leading-14">

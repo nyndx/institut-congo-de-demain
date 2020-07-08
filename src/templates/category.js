@@ -4,11 +4,11 @@ import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ArticleList from "../components/articlelist"
 
-const Category = ({ pageContext, data }) => {
+const Category = ({ pageContext, data, location }) => {
   console.log(data)
   return (
     <Layout>
-      <SEO title={pageContext.title}></SEO>
+      <SEO title={pageContext.title} pathname={location.pathname}></SEO>
 
       <ArticleList
         data={data}

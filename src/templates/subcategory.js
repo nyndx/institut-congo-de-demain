@@ -4,10 +4,10 @@ import SEO from "../components/seo"
 import ArticleList from "../components/articlelist"
 
 import { graphql } from "gatsby"
-const Sub = ({ pageContext, data }) => {
+const Sub = ({ pageContext, data, location }) => {
   return (
     <Layout>
-      <SEO title={pageContext.tag}></SEO>
+      <SEO title={pageContext.tag} pathname={location.pathname}></SEO>
       <div className="mt-8 md:mt-10">
         <h1 className="pb-4 text-lg italic font-medium tracking-wide text-blue-400 border-b-2 border-gray-200">
           Articles dans # {pageContext.tag}

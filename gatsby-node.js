@@ -110,17 +110,15 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   posts.forEach(({ node: post }) => {
-    post.subcategory.forEach(item => {
-      createPage({
-        path: `/analyses/${slugify(post.category.tag, {
-          replacement: "-",
-          lower: true,
-        })}/${slugify(post.slug, { replacement: "-", lower: true })}`,
-        component: postTemplate,
-        context: {
-          id: post.id,
-        },
-      })
+    createPage({
+      path: `/analyses/${slugify(post.category.tag, {
+        replacement: "-",
+        lower: true,
+      })}/${slugify(post.slug, { replacement: "-", lower: true })}`,
+      component: postTemplate,
+      context: {
+        id: post.id,
+      },
     })
   })
 }

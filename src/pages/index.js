@@ -3,9 +3,9 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ location }) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Home" pathname={location.pathname} />
     <div className="flex items-center justify-center mx-auto space-y-8 font-sans md:px-6 prose min-h-40vh">
       <div>
         <figure>

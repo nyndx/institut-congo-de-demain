@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const NotFoundPage = () => (
+const NotFoundPage = ({ location }) => (
   <Layout>
-    <SEO title="404: Not found" />
+    <SEO title="404: Not found" pathname={location.pathname} />
     <div className="flex items-center justify-center min-h-60vh prose">
       <div>
         <h1 className="text-6xl">NOT FOUND</h1>
