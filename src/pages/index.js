@@ -9,18 +9,13 @@ const IndexPage = ({ location }) => (
     <div className="flex items-center justify-center mx-auto font-sans mx-w-none prose min-h-40vh">
       <div>
         <figure>
-          <blockquote>
-            <p className="text-xl italic sm:text-2xl md:text-3xl">
-              <em>
-                Lorsque nous nous y attendons le moins, la vie nous met au défi
-                de tester notre courage et notre volonté de changer ; à un tel
-                moment, il est inutile de prétendre que rien ne s'est passé ou
-                de dire que nous ne sommes pas encore prêts. Le défi n'attendra
-                pas. La vie ne regarde pas en arrière. Une semaine est plus que
-                suffisante pour nous permettre de décider si nous acceptons ou
-                non notre destin.
-              </em>
-            </p>
+          <blockquote className="text-xl italic sm:text-2xl">
+            Lorsque nous nous y attendons le moins, la vie nous met au défi de
+            tester notre courage et notre volonté de changer ; à un tel moment,
+            il est inutile de prétendre que rien ne s'est passé ou de dire que
+            nous ne sommes pas encore prêts. Le défi n'attendra pas. La vie ne
+            regarde pas en arrière. Une semaine est plus que suffisante pour
+            nous permettre de décider si nous acceptons ou non notre destin.
           </blockquote>
           <figcaption className="mr-8 text-right">
             <span className="block text-lg text-right">
