@@ -38,7 +38,7 @@ const Post = ({ data, location }) => {
           </div>
 
           <div className="space-y-8">
-            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-700 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-700 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
               {title}
             </h1>
             <div className="flex flex-wrap justify-center">
@@ -82,7 +82,7 @@ const Post = ({ data, location }) => {
           </div>
         </header>
         <div>
-          <div className="mt-8 md:mt-10 prose">
+          <div className="mt-8 md:mt-10 prose lg:prose-lg max-w-none">
             {content.map(block => (
               <div key={block.id}>
                 {block.model.apiKey === "text" && (

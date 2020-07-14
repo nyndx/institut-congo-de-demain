@@ -10,12 +10,12 @@ const typographyTheme = typography({
   headerFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
   bodyFontFamily: ["Inter var", ...defaultTheme.fontFamily.sans],
 
-  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
-    blockquote: {
-      paddingLeft: 0,
-      marginLeft: 0,
-    },
-  }),
+  // overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  //   blockquote: {
+  //     paddingLeft: 0,
+  //     marginLeft: 0,
+  //   },
+  // }),
 })
 
 // Option 2 - Using a theme
@@ -31,14 +31,39 @@ module.exports = {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
       typography: {
-        bullets: "line",
-        linkColor: [
-          "#bada55",
-          {
-            hover: "#facade",
+        default: {
+          css: {
+            color: "#333",
+            a: {
+              color: "#bada55",
+              "&:hover": {
+                color: "#facade",
+              },
+            },
+            blockquote: {
+              color: "#718096",
+              borderLeftWidth: "4px",
+              borderLeftStyle: "solid",
+              borderLeftColor: "#63B3ED",
+              paddingLeft: "1rem",
+            },
+            "* + blockquote": {
+              marginTop: "1rem",
+            },
+            "blockquote + *": {
+              marginTop: "1rem",
+            },
           },
-        ],
+        },
       },
+      // bullets: "line",
+      // linkColor: [
+      //   "#bada55",
+      //   {
+      //     hover: "#facade",
+      //   },
+      // ],
+
       maxWidth: {
         "1/4": "25%",
         "1/3": "33%",
@@ -155,151 +180,8 @@ module.exports = {
           },
         },
       ])
-
-      addComponents({
-        ".prose": {
-          "> :first-child": {
-            marginTop: "0",
-          },
-          "> :last-child": {
-            marginBottom: "0",
-          },
-
-          fontSize: theme("fontSize.base"),
-          lineHeight: theme("lineHeight.7"),
-          color: theme("colors.gray.700"),
-          p: {
-            marginTop: theme("spacing.5"),
-            marginBottom: theme("spacing.5"),
-          },
-          h2: {
-            marginTop: theme("spacing.12"),
-            marginBottom: theme("spacing.6"),
-            fontSize: theme("fontSize.2xl"),
-            fontWeight: "700",
-            lineHeight: theme("lineHeight.8"),
-            letterSpacing: theme("letterSpacing.tight"), // Consider removing
-            color: theme("colors.gray.900"),
-          },
-          h3: {
-            marginTop: theme("spacing.8"),
-            marginBottom: theme("spacing.3"),
-            fontSize: theme("fontSize.xl"),
-            fontWeight: "600",
-            lineHeight: theme("lineHeight.8"),
-            color: theme("colors.gray.900"),
-          },
-          "h3 + *": {
-            marginTop: "0",
-          },
-          ol: {
-            counterReset: "list-counter",
-            marginTop: theme("spacing.5"),
-            marginBottom: theme("spacing.5"),
-          },
-          ul: {
-            marginTop: theme("spacing.5"),
-            marginBottom: theme("spacing.5"),
-          },
-          li: {
-            marginTop: theme("spacing.2"),
-            marginBottom: theme("spacing.2"),
-          },
-          "ol li": {
-            position: "relative",
-            counterIncrement: "list-counter",
-            paddingLeft: theme("spacing.8"),
-          },
-          "ol li:before": {
-            content: 'counter(list-counter) "."',
-            position: "absolute",
-            left: "0",
-            fontWeight: "600",
-            color: theme("colors.gray.500"),
-          },
-          "ul li": {
-            position: "relative",
-            paddingLeft: theme("spacing.8"),
-          },
-          "ul li:before": {
-            content: '""',
-            position: "absolute",
-            top: "calc(0.875em - 0.0625em)",
-            left: "0",
-            backgroundColor: theme("colors.gray.400"),
-            height: "0.125em",
-            width: "0.75em",
-          },
-          img: {
-            marginTop: theme("spacing.8"),
-            marginBottom: theme("spacing.8"),
-          },
-          video: {
-            marginTop: theme("spacing.8"),
-            marginBottom: theme("spacing.8"),
-          },
-          figure: {
-            marginTop: theme("spacing.8"),
-            marginBottom: theme("spacing.8"),
-          },
-          blockquote: {
-            color: theme("colors.gray.600"),
-            fontStyle: "italic",
-            borderLeftWidth: theme("borderWidth.4"),
-            borderLeftStyle: "solid",
-            borderLeftColor: theme("colors.blue.400"),
-            paddingLeft: theme("spacing.4"),
-          },
-          "* + blockquote": {
-            marginTop: theme("spacing.4"),
-          },
-          "blockquote + *": {
-            marginTop: theme("spacing.4"),
-          },
-          code: {
-            fontSize: theme("fontSize.sm"),
-            lineHeight: theme("lineHeight.7"),
-            fontFamily: theme("fontFamily.mono").join(", "),
-            color: theme("colors.gray.700"),
-            backgroundColor: theme("colors.gray.50"),
-            borderColor: theme("colors.gray.200"),
-            borderWidth: theme("borderWidth.default"),
-            borderRadius: theme("borderRadius.md"),
-            paddingTop: theme("spacing.1"),
-            paddingRight: theme("spacing[1.5]"),
-            paddingBottom: theme("spacing.1"),
-            paddingLeft: theme("spacing[1.5]"),
-          },
-          a: {
-            color: theme("colors.gray.900"),
-            textDecoration: "underline",
-          },
-          pre: {
-            color: theme("colors.gray.200"),
-            fontSize: theme("fontSize.sm"),
-            fontFamily: theme("fontFamily.mono").join(", "),
-            lineHeight: theme("lineHeight.6"),
-            borderRadius: theme("borderRadius.md"),
-            backgroundColor: theme("colors.gray.800"),
-            paddingTop: theme("spacing.3"),
-            paddingRight: theme("spacing.4"),
-            paddingBottom: theme("spacing.3"),
-            paddingLeft: theme("spacing.4"),
-            overflowX: "auto",
-          },
-          "pre code": {
-            backgroundColor: "transparent",
-            borderWidth: "0",
-            borderRadius: "0",
-            padding: "0",
-            color: "inherit",
-            fontSize: "inherit",
-            fontFamily: "inherit",
-            lineHeight: "inherit",
-          },
-        },
-      })
     },
+    require("@tailwindcss/typography"),
     typographyTheme,
   ],
 }
